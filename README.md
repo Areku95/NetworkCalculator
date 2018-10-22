@@ -1,4 +1,4 @@
-#NetworkCalculator
+# NetworkCalculator
 
 Just a personal project for fun wrote in Python 3.
 

@@ -11,10 +11,10 @@ def cidr_to_bin_dec(a, b):
         i2 += 1
         i -= 1
         if i2 == 8:
-            output_dec += cidr_block
-            output_dec += "."
-            output_bin += str((int(cidr_block, 2)))
+            output_bin += cidr_block
             output_bin += "."
+            output_dec += str((int(cidr_block, 2)))
+            output_dec += "."
             cidr_block = ""
             i2 = 0
 
@@ -25,22 +25,23 @@ def cidr_to_bin_dec(a, b):
         i2 += 1
         i -= 1
         if i2 == 8:
-            output_dec += cidr_block
-            output_dec += "."
-            output_bin += str((int(cidr_block, 2)))
+            output_bin += cidr_block
             output_bin += "."
+            output_dec += str((int(cidr_block, 2)))
+            output_dec += "."
             cidr_block = ""
             i2 = 0
 
     output_dec = output_dec[:-1]
     output_bin = output_bin[:-1]
     print('')
-    print('La notation décimale est :')
+    print('The binary notation is:')
     print(output_bin)
-    print('La notation binaire est:')
+    print('The decimal notation is:')
     print(output_dec)
     print("")
-    print("The maximum number of machines for the network/machine address", network_address, "is :")
+    print("The maximum number of hosts for the network/host address", network_address, "is :")
+	print("")
     maximum_hosts(cidr)
     output_dec = output_dec[:cidr + 2] + '|' + output_dec[cidr + 2:]
     print(output_dec)

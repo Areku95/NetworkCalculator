@@ -1,4 +1,4 @@
-def cidr_to_bin_dec(a, b):
+def cidr_to_bin_dec(a, b): # CIDR to binary/decimal function
     cidr_block = ""
     output_bin = ""
     output_dec = ""

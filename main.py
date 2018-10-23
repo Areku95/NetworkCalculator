@@ -1,4 +1,5 @@
-def cidr_to_bin_dec(a, b, c): # CIDR to binary/decimal function
+"""
+def cidr_to_bin_dec(a, b, c):  # CIDR to binary/decimal function
     cidr_block = ""
     output_bin = ""
     output_dec = ""
@@ -50,13 +51,39 @@ def cidr_to_bin_dec(a, b, c): # CIDR to binary/decimal function
         print("")
     elif c == 2:  # Binary output (for others functions)
             print(output_bin)
+"""
+
+
+def cidr_to_bin(mask_cidr):
+    i = mask_cidr
+    mask_bin = []
+    block = ""
+    i2 = 0
+    while i != 0:
+        if i2 == 8:
+            mask_bin.append(block)
+            block = ""
+            i2 = 0
+        block += "1"
+        i2 += 1
+        i -= 1
+    i = 32 - mask_cidr
+    while i != -1:
+        if i2 == 8:
+            mask_bin.append(block)
+            block = ""
+            i2 = 0
+        block += "0"
+        i2 += 1
+        i -= 1
+    print(mask_bin)
+
+
 
 
 def dec_to_cidr(decimal_input):
     i = 0
     block = ""
-
-
 
 
 def dec_to_bin(dec_input):
@@ -66,17 +93,20 @@ def dec_to_bin(dec_input):
     for i, elem in enumerate(blocks):
         elem = int(elem)
         bin_output += bin(elem)
-        #"{0:#b}".format(blocks)
-        #bin_ouput =+ "{0:b}".format(elem)
+        # "{0:#b}".format(blocks)
+        # bin_ouput =+ "{0:b}".format(elem)
         i += 1
     bin_output = bin_output[:-1]
     print(bin_ouput)
+
 
 def maximum_hosts(a):
     print((2 ** (32 - a)) - 2)
 
 
-dec_to_bin('192.168.1.0')
+# dec_to_bin('192.168.1.0')
+
+cidr_to_bin(22)
 
 choice = 0
 while not 1 <= choice <= 3:
@@ -109,4 +139,3 @@ else:
 
 # A1: Depends if the function is call for an UI output (1) or a function output (2).
 #     The last parameter tells what to do.
-

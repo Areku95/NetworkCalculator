@@ -79,15 +79,26 @@ def cidr_to_bin(mask_cidr):
     return mask_bin
 
 
+def dec_to_cidr(dec_input):
+    bin_output = []
+    dec_input = dec_input.split('.')
+    for i, item in enumerate(dec_input):
+        bin_output.append(bin(int(dec_input[i])))
+
+    return bin_output
+
+
 def maximum_hosts(cidr_input):
     return (2 ** (32 - cidr_input)) - 2
 
 
+dec_to_cidr("255.255.255.0")
+
 choice = 0
 while not 1 <= choice <= 3:
     print("")
-    print("To convert CIDR to DEC, type 1 :")
-    print("To convert Network Mask to CIDR, type 2 :")
+    print("To convert a CIDR mask to decimal notation, type 1:")
+    print("To convert network mask with decimal notation to CIDR, type 2:")
     print("Type 3 for exit")
     choice = input()
     choice = int(choice)
@@ -96,7 +107,7 @@ if choice == 3:
 else:
     if choice == 1:
         print("")
-        print("Please type your CIDR number :")
+        print("Please type your a CIDR number :")
         cidr = input()
         cidr = int(cidr)
         print("")
@@ -113,7 +124,8 @@ else:
         print("")
         print("You can have a maximum of", maximum_hosts(cidr), "hosts.")
     elif choice == 2:
-        print("TO DO")
+        dec_to_cidr("255.255.255.0")
+
 
 # A1: Depends if the function is call for an UI output (1) or a function output (2).
 #     The last parameter tells what to do.

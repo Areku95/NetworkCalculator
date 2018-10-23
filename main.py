@@ -1,4 +1,4 @@
-def cidr_to_bin_dec(a, b): # CIDR to binary/decimal function
+def cidr_to_bin_dec(a, b, c): # CIDR to binary/decimal function
     cidr_block = ""
     output_bin = ""
     output_dec = ""
@@ -34,34 +34,55 @@ def cidr_to_bin_dec(a, b): # CIDR to binary/decimal function
 
     output_dec = output_dec[:-1]
     output_bin = output_bin[:-1]
-    print('')
-    print('The binary notation is:')
-    print(output_bin)
-    print('The decimal notation is:')
-    print(output_dec)
-    print("")
-    print("The maximum number of hosts for the network/host address", network_address, "is :")
-	print("")
-    maximum_hosts(cidr)
-    output_dec = output_dec[:cidr + 2] + '|' + output_dec[cidr + 2:]
-    print(output_dec)
-    print(network_address_bin)
-    print("")
+    if c == 1:  # Full output (for UI)
+        print('')
+        print('The binary notation is:')
+        print(output_bin)
+        print('The decimal notation is:')
+        print(output_dec)
+        print("")
+        print("The maximum number of hosts for the network/host address", network_address, "is :")
+        print("")
+        maximum_hosts(cidr)
+        output_dec = output_dec[:cidr + 2] + '|' + output_dec[cidr + 2:]
+        print(output_dec)
+        print(network_address_bin)
+        print("")
+    elif c == 2:  # Binary output (for others functions)
+            print(output_bin)
 
 
-def dec_to_cidr(a):
-    print("")
+def dec_to_cidr(decimal_input):
+    i = 0
+    block = ""
 
+
+
+
+def dec_to_bin(dec_input):
+    i = 1
+    blocks = dec_input.split(".")
+    bin_output = ""
+    for i, elem in enumerate(blocks):
+        elem = int(elem)
+        bin_output += bin(elem)
+        #"{0:#b}".format(blocks)
+        #bin_ouput =+ "{0:b}".format(elem)
+        i += 1
+    bin_output = bin_output[:-1]
+    print(bin_ouput)
 
 def maximum_hosts(a):
     print((2 ** (32 - a)) - 2)
 
 
+dec_to_bin('192.168.1.0')
+
 choice = 0
 while not 1 <= choice <= 3:
     print("")
     print("To convert CIDR to DEC/BIN, type 1 :")
-    print("To convert Network Address to CIDR, type 2 :")
+    print("To convert Network Mask to CIDR, type 2 :")
     print("Type 3 for exit")
     choice = input()
     choice = int(choice)
@@ -82,6 +103,10 @@ else:
             print("Please enter CIDR between 1 & 32 :")
             cidr = input()
             cidr = int(cidr)
-        cidr_to_bin_dec(cidr, network_address)
+        cidr_to_bin_dec(cidr, network_address, 1)  # The last parameter, tells what kind of output we want (cf. A1).
     else:
         print("TO DO")
+
+# A1: Depends if the function is call for an UI output (1) or a function output (2).
+#     The last parameter tells what to do.
+

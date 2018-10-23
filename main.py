@@ -76,7 +76,7 @@ def cidr_to_bin(mask_cidr):
         block += "0"
         i2 += 1
         i -= 1
-    print(mask_bin)
+    return mask_bin
 
 
 
@@ -97,21 +97,17 @@ def dec_to_bin(dec_input):
         # bin_ouput =+ "{0:b}".format(elem)
         i += 1
     bin_output = bin_output[:-1]
-    print(bin_ouput)
+    print(bin_output)
 
 
-def maximum_hosts(a):
-    print((2 ** (32 - a)) - 2)
+def maximum_hosts(cidr):
+    return (2 ** (32 - cidr)) - 2
 
-
-# dec_to_bin('192.168.1.0')
-
-cidr_to_bin(22)
 
 choice = 0
 while not 1 <= choice <= 3:
     print("")
-    print("To convert CIDR to DEC/BIN, type 1 :")
+    print("To convert CIDR to DEC, type 1 :")
     print("To convert Network Mask to CIDR, type 2 :")
     print("Type 3 for exit")
     choice = input()
@@ -125,16 +121,19 @@ else:
         cidr = input()
         cidr = int(cidr)
         print("")
-        print("Please type your Network address or machine address (or leave it empty)")
-        print("Ex. : 192.168.1.0 / 172.16.3.254 :")
-        network_address = input()
-        network_address = str(network_address)
         while cidr > 32:
             print("Please enter CIDR between 1 & 32 :")
             cidr = input()
             cidr = int(cidr)
-        cidr_to_bin_dec(cidr, network_address, 1)  # The last parameter, tells what kind of output we want (cf. A1).
-    else:
+        mask = ""
+        for i, item in enumerate(cidr_to_bin(cidr)):
+            mask += str(int(cidr_to_bin(cidr)[i], 2)) + "."
+        mask = mask[:-1]
+        print("The decimal notation is:")
+        print(mask)
+        print("")
+        print("You can have a maximum of", maximum_hosts(cidr), "hosts.")
+    elif choice == 2:
         print("TO DO")
 
 # A1: Depends if the function is call for an UI output (1) or a function output (2).

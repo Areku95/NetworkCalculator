@@ -39,6 +39,10 @@ def maximum_hosts(cidr_input):
     return (2 ** (32 - cidr_input)) - 2
 
 
+def first_host():
+    print("")
+
+
 choice = 0
 while not 1 <= choice <= 3:
     print("")

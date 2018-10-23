@@ -92,7 +92,7 @@ def maximum_hosts(cidr_input):
     return (2 ** (32 - cidr_input)) - 2
 
 
-dec_to_cidr("255.255.255.0")
+dec_to_bin("255.255.255.0")
 
 choice = 0
 while not 1 <= choice <= 3:

@@ -40,10 +40,6 @@ def maximum_hosts(cidr_input):
 
 
 choice = 0
-while not 1 <= choice <= 2:
-    print("")
-
-choice = 0
 while not 1 <= choice <= 3:
     print("")
     print("To convert a CIDR mask to decimal notation, type 1:")

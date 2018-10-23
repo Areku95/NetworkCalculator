@@ -79,29 +79,8 @@ def cidr_to_bin(mask_cidr):
     return mask_bin
 
 
-
-
-def dec_to_cidr(decimal_input):
-    i = 0
-    block = ""
-
-
-def dec_to_bin(dec_input):
-    i = 1
-    blocks = dec_input.split(".")
-    bin_output = ""
-    for i, elem in enumerate(blocks):
-        elem = int(elem)
-        bin_output += bin(elem)
-        # "{0:#b}".format(blocks)
-        # bin_ouput =+ "{0:b}".format(elem)
-        i += 1
-    bin_output = bin_output[:-1]
-    print(bin_output)
-
-
-def maximum_hosts(cidr):
-    return (2 ** (32 - cidr)) - 2
+def maximum_hosts(cidr_input):
+    return (2 ** (32 - cidr_input)) - 2
 
 
 choice = 0
